@@ -7,7 +7,7 @@ export default function ViewStundents() {
 
   useEffect(() => {
     traerDatos().then(setData);
-    console.log(data);
+    // console.log(data);
   }, []);
 
   return (
