@@ -78,49 +78,54 @@ export default function Header() {
   // }, );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          ></IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Secretary Cemas
-          </Typography>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
+            ></IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              Secretary Cemas
+            </Typography>
 
-          <Box component={Link} to="/Register_student">
-            <AddIcon />
-          </Box>
+            <Box component={Link} to="/Register_student">
+              <AddIcon />
+            </Box>
 
-          <Box mr={3} ml={3} component={Link} to="/">
-            <BungalowIcon />
-          </Box>
+            <Box mr={3} ml={3} component={Link} to="/">
+              <BungalowIcon />
+            </Box>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
 
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-              onBlur={(event) => setQuery(event.target.value)}
-            />
-            {filteredUsers.map((student) => (
-              <Student key={student.id} student={student} />
-            ))}
-          </Search>
-        </Toolbar>
-      </AppBar>
-    </Box>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </Search>
+          </Toolbar>
+        </AppBar>
+      </Box>
+
+      <Box mt={5}>
+        {filteredUsers.map((student) => (
+          <Student key={student.id} student={student} />
+        ))}
+      </Box>
+    </>
   );
 }
