@@ -10,10 +10,12 @@ function App() {
     <>
       <HashRouter>
         <Header />
+        <br />
+        <br />
+        <br />
         <Routes>
           <Route path="/" element={<Navigate to={"/Students"} />} />
           <Route path="/Students" element={<ViewStundents />} />
-
           <Route path="/Buscador" element={<Buscador />} />
           <Route path="/Register_student" element={<Register />} />
         </Routes>

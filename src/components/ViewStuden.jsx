@@ -10,6 +10,9 @@ export default function ViewStundents() {
     // console.log(data);
   }, []);
 
+  if (!data) {
+    return <h4>Loading...</h4>;
+  }
   return (
     <>
       <div>

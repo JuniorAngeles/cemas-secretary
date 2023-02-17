@@ -12,6 +12,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import BungalowIcon from "@mui/icons-material/Bungalow";
 import { Link } from "react-router-dom";
+import Student from "./Student";
+import { useState, useMemo, useEffect } from "react";
+import { Busqueda } from "./Busqueda";
+import { traerDatos } from "../services/firebase";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,6 +60,23 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState(users);
+  const [query, setQuery] = useState("");
+  // console.log(query);
+
+  useEffect(() => {
+    traerDatos().then(setUsers);
+    if (users) {
+      const result = Busqueda(users, query);
+      setFilteredUsers(result);
+    }
+  }, [query]);
+
+  // useMemo(() => {
+  //
+  // }, );
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -92,7 +113,11 @@ export default function Header() {
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
+              onBlur={(event) => setQuery(event.target.value)}
             />
+            {filteredUsers.map((student) => (
+              <Student key={student.id} student={student} />
+            ))}
           </Search>
         </Toolbar>
       </AppBar>
