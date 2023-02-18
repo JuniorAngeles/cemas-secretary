@@ -12,6 +12,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import BungalowIcon from "@mui/icons-material/Bungalow";
 import { Link } from "react-router-dom";
+import Student from "./Student";
+import { useState, useMemo, useEffect } from "react";
+import { Busqueda } from "./Busqueda";
+import { traerDatos } from "../services/firebase";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,46 +60,72 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
+  const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState(users);
+  const [query, setQuery] = useState("");
+  // console.log(query);
+
+  useEffect(() => {
+    traerDatos().then(setUsers);
+    if (users) {
+      const result = Busqueda(users, query);
+      setFilteredUsers(result);
+    }
+  }, [query]);
+
+  // useMemo(() => {
+  //
+  // }, );
+
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          ></IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
-          >
-            Secretary Cemas
-          </Typography>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="open drawer"
+              sx={{ mr: 2 }}
+            ></IconButton>
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            >
+              Secretary Cemas
+            </Typography>
 
-          <Box component={Link} to="/Register_student">
-            <AddIcon />
-          </Box>
+            <Box component={Link} to="/Register_student">
+              <AddIcon />
+            </Box>
 
-          <Box mr={3} ml={3} component={Link} to="/">
-            <BungalowIcon />
-          </Box>
+            <Box mr={3} ml={3} component={Link} to="/">
+              <BungalowIcon />
+            </Box>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
 
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-        </Toolbar>
-      </AppBar>
-    </Box>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+                onChange={(event) => setQuery(event.target.value)}
+              />
+            </Search>
+          </Toolbar>
+        </AppBar>
+      </Box>
+
+      <Box mt={5}>
+        {filteredUsers.map((student) => (
+          <Student key={student.id} student={student} />
+        ))}
+      </Box>
+    </>
   );
 }
