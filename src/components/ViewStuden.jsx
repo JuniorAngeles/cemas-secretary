@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { traerDatos } from "../services/firebase";
 import Student from "./Student";
+import { Typography, Box, Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function ViewStundents() {
   const [data, setData] = useState([]);
@@ -10,8 +12,20 @@ export default function ViewStundents() {
     // console.log(data);
   }, []);
 
-  if (!data) {
-    return <h4>Loading...</h4>;
+  if (data.length == 0) {
+    return (
+      <Box
+        mt={30}
+        sx={{
+          textAlign: "center",
+        }}
+      >
+        <Typography sx={{}}>!No hay datos de momento...</Typography>
+        <Link to="/Register_student">
+          <Button variant="contained">Agregar Estudiante</Button>
+        </Link>
+      </Box>
+    );
   }
   return (
     <>

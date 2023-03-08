@@ -1,70 +1,88 @@
-import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import Grid from "@mui/material/Grid";
+import { grey } from "@mui/material/colors/";
+import { Grid, Box, Stack, Button, Typography, Avatar } from "@mui/material";
+import CircleIcon from "@mui/icons-material/Circle";
 
 export default function Student({ student }) {
+  // console.log(student.id);
   return (
-    <Box
-      sx={{
-        with: {
-          xs: 100,
-          sm: 200,
-          md: 300,
-          lg: 400,
-          x1: 500,
-        },
-        height: {
-          xs: 900,
-          sm: 700,
-          md: 800,
-          lg: 900,
-          x1: 1000,
-        },
-      }}
-    >
-      <Box
-        ml={10}
-        mr={10}
-        sx={{
-          with: {
-            xs: 100,
-            sm: 200,
-            md: 300,
-            lg: 400,
-            x1: 500,
-          },
-
-          border: 1,
-        }}
+    <>
+      <Grid
+        container
+        flexDirection={{ xs: "column", md: "row", lg: "row", xl: "row" }}
+        gap="3rem"
+        alignItems="center"
+        justifyContent="center"
+        sx={student.id % 2 === 0 ? { flexDirection: "row-reverse" } : {}}
       >
-        <Typography
+        <Grid
+          item
+          width={{ xs: "100%", md: "50%", lg: "50%", lx: "50%" }}
           sx={{
-            with: {
-              xs: 100,
-              sm: 200,
-              md: 300,
-              lg: 400,
-              x1: 500,
-            },
-
-            fontSize: "35px",
-            color: "black",
-            fontFamily: "cursive",
-            textAlign: "justify",
-            alignContent: "center",
+            display: "flex",
+            flexDirection: "column",
+            gap: "1rem",
+            padding: "1rem",
           }}
         >
-          <strong>Nombre:</strong> {student.nombre} <br />{" "}
-          <strong>Apellido:</strong> {student.apellido} <br />{" "}
-          <strong>Cedula:</strong> {student.cedula} <br />{" "}
-          <strong>N.Madre:</strong> {student.nMadre} <br />{" "}
-          <strong>N.Padre:</strong> {student.nPadre}
-          <br /> <strong>C.Padre:</strong> {student.idPadre}
-          <br /> <strong>C.Madre:</strong> {student.idMadre}
-        </Typography>
-      </Box>
-    </Box>
+          <Typography
+            sx={{
+              color: "#637DFF",
+              fontSize: { xs: "1.5rem", md: "2rem" },
+            }}
+          >
+            {student.nombre}
+          </Typography>
+          <Typography sx={{ fontSize: { xs: "1.25rem", md: "1.5rem" } }}>
+            No.cedula: {""} {student.cedula}
+          </Typography>
+          <Typography sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
+            {student.nombre} hijo de {student.nMadre} y {student.nPadre}{" "}
+            estudiante del centro educativo manuel acevedo serrano fe y alegria
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          width={{ xs: "70vw", md: "30vw" }}
+          sx={{
+            border: "3px solid grey",
+            borderRadius: "10px",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
+          }}
+        >
+          <Box
+            sx={{
+              borderBottom: "2px solid grey",
+              display: "flex",
+              gap: "5px",
+              padding: "10px",
+            }}
+          >
+            <CircleIcon sx={{ fill: "#FF4A4A", fontSize: "1rem" }} />
+            <CircleIcon sx={{ fill: "#FEB83D", fontSize: "1rem" }} />
+            <CircleIcon sx={{ fill: "#01C542", fontSize: "1rem" }} />
+            <Box
+              sx={{
+                backgroundColor: `${grey[800]}`,
+                width: "600px",
+                borderRadius: "5px",
+              }}
+            ></Box>
+          </Box>
+          <Avatar
+            src={""}
+            alt={student.nombre}
+            sx={{ width: "100%", height: "auto", borderRadius: 0 }}
+          />
+        </Grid>
+      </Grid>
+      <Box
+        sx={{
+          height: "65vh",
+        }}
+      ></Box>
+    </>
   );
 }
 {

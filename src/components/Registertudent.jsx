@@ -1,5 +1,6 @@
 import { saveArchivos } from "../services/firebase";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -25,8 +26,14 @@ export default function Register() {
     };
     // console.log(Objet);
     saveArchivos(Objet)
-      .then(navigate("/Students"))
-      .then(alert("se agrego el estudiante"));
+      .then(
+        swal(
+          "Registro Exitoso",
+          "Gracias por registrarte, Espera nuestro llamado",
+          "success"
+        )
+      )
+      .then(navigate("/Students"));
   };
 
   return (
