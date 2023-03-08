@@ -67,11 +67,24 @@ export default function Header() {
 
   useEffect(() => {
     traerDatos().then(setUsers);
-    if (users) {
-      const result = Busqueda(users, query);
-      setFilteredUsers(result);
+  }, []);
+
+  useEffect(() => {
+    if (query.trim() === "") {
+      setFilteredUsers([]);
+      return;
     }
-  }, [query]);
+    const result = Busqueda(users, query);
+    setFilteredUsers(Array.from(new Set(result)));
+  }, [query, users]);
+
+  // useEffect(() => {
+  //   traerDatos().then(setUsers);
+  //   if (users) {
+  //     const result = Busqueda(users, query);
+  //     setFilteredUsers(result);
+  //   }
+  // }, [query]);
 
   // useMemo(() => {
   //
@@ -112,7 +125,7 @@ export default function Header() {
               </SearchIconWrapper>
 
               <StyledInputBase
-                placeholder="Search…"
+                placeholder="Buscame..."
                 inputProps={{ "aria-label": "search" }}
                 onChange={(event) => setQuery(event.target.value)}
               />
