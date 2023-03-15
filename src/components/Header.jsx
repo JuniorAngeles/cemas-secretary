@@ -118,7 +118,6 @@ export default function Header() {
             <Box mr={3} ml={3} component={Link} to="/">
               <BungalowIcon />
             </Box>
-
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />

@@ -1,8 +1,38 @@
 import { grey } from "@mui/material/colors/";
 import { Grid, Box, Stack, Button, Typography, Avatar } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+import { useNavigate } from "react-router-dom";
+import { deleteArchivo, editArchivo } from "../services/firebase";
+import { useState, useEffect } from "react";
 
+// const inicialState = {
+//   nombre:"",
+//   apellido:"",
+//   cedula:"",
+//   nMadre:"",
+//   nPadre:"",
+//   idPadre:"",
+//   idMadre:"",
+// }
 export default function Student({ student }) {
+  const navigate = useNavigate();
+
+  const [currentId, setCurrentId] = useState("");
+
+  const handleDelete = () => {
+    if (
+      window.confirm("estas seguro de que quieres eliminar este estudiante?")
+    ) {
+      deleteArchivo(student.id);
+
+      location.reload();
+    }
+  };
+
+  const handleUpdateArchivo = () => {
+    editArchivo(student.id);
+  };
+
   // console.log(student.id);
   return (
     <>
@@ -33,12 +63,38 @@ export default function Student({ student }) {
             {student.nombre}
           </Typography>
           <Typography sx={{ fontSize: { xs: "1.25rem", md: "1.5rem" } }}>
-            No.cedula: {""} {student.cedula}
+            {!student.cedula ? "no existe" : ""} {student.cedula}
           </Typography>
           <Typography sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
             {student.nombre} hijo de {student.nMadre} y {student.nPadre}{" "}
             estudiante del centro educativo manuel acevedo serrano fe y alegria
           </Typography>
+          <Stack
+            direction="row"
+            flexWrap="wrap"
+            gap="1rem"
+            sx={{
+              marginTop: "2rem",
+            }}
+          >
+            <Button
+              variant="contained"
+              target="_blank"
+              sx={{ width: "120px", backgroundColor: "#5774FF" }}
+              onClick={handleUpdateArchivo}
+            >
+              Editar
+            </Button>
+
+            <Button
+              variant="contained"
+              target="_blank"
+              sx={{ width: "120px", backgroundColor: "#5774FF" }}
+              onClick={handleDelete}
+            >
+              Eliminar
+            </Button>
+          </Stack>
         </Grid>
         <Grid
           item
@@ -71,7 +127,7 @@ export default function Student({ student }) {
             ></Box>
           </Box>
           <Avatar
-            src={""}
+            src={student.img}
             alt={student.nombre}
             sx={{ width: "100%", height: "auto", borderRadius: 0 }}
           />
