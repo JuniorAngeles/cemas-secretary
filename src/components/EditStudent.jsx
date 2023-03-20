@@ -40,9 +40,11 @@ export default function Formulario({ student }) {
       .then(navigate("/"));
   };
 
-  //   const body = (
-
-  //   );
+  //  cancel edit
+  // cancelar ediccion
+  const handleCancelEdit = () => {
+    navigate("/");
+  };
 
   return (
     <form>
@@ -115,8 +117,15 @@ export default function Formulario({ student }) {
         >
           Guardar
         </Button>
+        <Button
+          variant="contained"
+          target="_blank"
+          sx={{ width: "120px", backgroundColor: "#5774FF" }}
+          onClick={handleCancelEdit}
+        >
+          Cancelar
+        </Button>
       </Stack>
     </form>
   );
 }
-// onSubmit={handleUpdateArchivo}
