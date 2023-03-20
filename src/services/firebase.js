@@ -8,6 +8,7 @@ import {
   doc,
   getDoc,
   deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -35,6 +36,7 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
+
 // const usuarioRef = db.collection("Estudiantes");
 
 // Guardar datos en firebase
@@ -61,16 +63,12 @@ export const deleteArchivo = async (id) => {
   await deleteDoc(doc(db, "Estudiantes", id));
 };
 
-export const editArchivo = async (id) => {
-  const docRef = doc(db, "Estudiantes", id);
-  const docSnap = await getDoc(docRef);
+export const editArchivo = async (id, data) => {
+  const studenRef = doc(db, "Estudiantes", id);
 
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
+  await updateDoc(studenRef, data).then(() => {
+    console.log("Se a actualizado");
+  });
 };
 
 export async function uploaFiles(file) {
