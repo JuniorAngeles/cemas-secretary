@@ -4,9 +4,11 @@ import CircleIcon from "@mui/icons-material/Circle";
 import { useNavigate } from "react-router-dom";
 import { deleteArchivo, editArchivo } from "../services/firebase";
 import { useState, useEffect } from "react";
+import swal from "sweetalert";
+import Formulario from "./EditStudent";
 
 // const inicialState = {
-//   nombre:"",
+//   nombre:{student.nombre},
 //   apellido:"",
 //   cedula:"",
 //   nMadre:"",
@@ -15,23 +17,54 @@ import { useState, useEffect } from "react";
 //   idMadre:"",
 // }
 export default function Student({ student }) {
+  const [showForm, setShowForm] = useState(false);
+
   const navigate = useNavigate();
 
-  const [currentId, setCurrentId] = useState("");
-
+  // function para eliminar Estudiantes
   const handleDelete = () => {
     if (
       window.confirm("estas seguro de que quieres eliminar este estudiante?")
     ) {
-      deleteArchivo(student.id);
+      deleteArchivo(student.id)
+        .then(
+          swal({
+            icon: "success",
+          })
+        )
+        .then(navigate("/"));
 
-      location.reload();
+      // location.reload();
+      // console.log("Hola");
     }
   };
 
-  const handleUpdateArchivo = () => {
-    editArchivo(student.id);
+  // cambio de estado de imput para edtar
+  const handleNombreChange = (event) => {
+    setNombre(event.target.value);
   };
+
+  const handleApellidoChange = (event) => {
+    setApellido(event.target.value);
+  };
+
+  const handleCedulaChange = (event) => {
+    setCedula(event.target.value);
+  };
+
+  const handleNMadreChange = (event) => {
+    setNMadre(event.target.value);
+  };
+
+  const handleNPadreChange = (event) => {
+    setNPadre(event.target.value);
+  };
+
+  const handleEditArchivo = () => {
+    setShowForm(true);
+  };
+
+  // function que guarda los cambios realizados
 
   // console.log(student.id);
   return (
@@ -60,14 +93,21 @@ export default function Student({ student }) {
               fontSize: { xs: "1.5rem", md: "2rem" },
             }}
           >
-            {student.nombre}
+            {student.nombre} {student.apellido}
           </Typography>
+
           <Typography sx={{ fontSize: { xs: "1.25rem", md: "1.5rem" } }}>
             {!student.cedula ? "no existe" : ""} {student.cedula}
           </Typography>
+
           <Typography sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
             {student.nombre} hijo de {student.nMadre} y {student.nPadre}{" "}
             estudiante del centro educativo manuel acevedo serrano fe y alegria
+          </Typography>
+
+          <Typography sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
+            {student.nMadre} Documento de identidad: {student.idMadre}{" "}
+            {student.nPadre} Documento de identidad: {student.idPadre}
           </Typography>
           <Stack
             direction="row"
@@ -77,23 +117,28 @@ export default function Student({ student }) {
               marginTop: "2rem",
             }}
           >
-            <Button
-              variant="contained"
-              target="_blank"
-              sx={{ width: "120px", backgroundColor: "#5774FF" }}
-              onClick={handleUpdateArchivo}
-            >
-              Editar
-            </Button>
+            {!showForm && (
+              <Button
+                variant="contained"
+                target="_blank"
+                sx={{ width: "120px", backgroundColor: "#5774FF" }}
+                onClick={handleEditArchivo}
+              >
+                Editar
+              </Button>
+            )}
+            {showForm && <Formulario student={student} />}
 
-            <Button
-              variant="contained"
-              target="_blank"
-              sx={{ width: "120px", backgroundColor: "#5774FF" }}
-              onClick={handleDelete}
-            >
-              Eliminar
-            </Button>
+            {!showForm && (
+              <Button
+                variant="contained"
+                target="_blank"
+                sx={{ width: "120px", backgroundColor: "#5774FF" }}
+                onClick={handleDelete}
+              >
+                Eliminar
+              </Button>
+            )}
           </Stack>
         </Grid>
         <Grid
@@ -140,14 +185,4 @@ export default function Student({ student }) {
       ></Box>
     </>
   );
-}
-{
-  /* <h1>{student.nombre}</h1>
-<h1>{student.apellido}</h1>
-<h1>{student.cedula}</h1>
-<h1>{student.nMadre}</h1>
-<h1>{student.nPadre}</h1>
-<h1>{student.idPadre}</h1>
-<h1>{student.idMadre}</h1>
-<h1>**************************</h1> */
 }
