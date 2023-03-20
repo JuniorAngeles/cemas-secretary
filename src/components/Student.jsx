@@ -7,15 +7,6 @@ import { useState, useEffect } from "react";
 import swal from "sweetalert";
 import Formulario from "./EditStudent";
 
-// const inicialState = {
-//   nombre:{student.nombre},
-//   apellido:"",
-//   cedula:"",
-//   nMadre:"",
-//   nPadre:"",
-//   idPadre:"",
-//   idMadre:"",
-// }
 export default function Student({ student }) {
   const [showForm, setShowForm] = useState(false);
 
@@ -24,12 +15,13 @@ export default function Student({ student }) {
   // function para eliminar Estudiantes
   const handleDelete = () => {
     if (
-      window.confirm("estas seguro de que quieres eliminar este estudiante?")
+      window.confirm("Estas seguro de que quieres eliminar este estudiante?")
     ) {
       deleteArchivo(student.id)
         .then(
           swal({
             icon: "success",
+            text: "En caso de que no se presenten los datos recarga la pagina",
           })
         )
         .then(navigate("/"));
@@ -37,27 +29,6 @@ export default function Student({ student }) {
       // location.reload();
       // console.log("Hola");
     }
-  };
-
-  // cambio de estado de imput para edtar
-  const handleNombreChange = (event) => {
-    setNombre(event.target.value);
-  };
-
-  const handleApellidoChange = (event) => {
-    setApellido(event.target.value);
-  };
-
-  const handleCedulaChange = (event) => {
-    setCedula(event.target.value);
-  };
-
-  const handleNMadreChange = (event) => {
-    setNMadre(event.target.value);
-  };
-
-  const handleNPadreChange = (event) => {
-    setNPadre(event.target.value);
   };
 
   const handleEditArchivo = () => {
@@ -106,9 +77,16 @@ export default function Student({ student }) {
           </Typography>
 
           <Typography sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
-            {student.nMadre} Documento de identidad: {student.idMadre}{" "}
-            {student.nPadre} Documento de identidad: {student.idPadre}
+            {student.nMadre} {!student.nMadre ? "no registrado" : ""} Documento
+            de identidad: {!student.idMadre ? "no registrado" : ""}{" "}
+            {student.idMadre}
           </Typography>
+          <Typography sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
+            {!student.nPadre ? "no registrado" : ""} {student.nPadre} Documento
+            de identidad: {!student.idPadre ? "no registrado" : ""}{" "}
+            {student.idPadre}
+          </Typography>
+
           <Stack
             direction="row"
             flexWrap="wrap"
