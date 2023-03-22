@@ -1,28 +1,29 @@
-import { saveArchivos } from "../services/firebase";
-import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
 import { useState } from "react";
-import { uploaFiles, getArchivo } from "../services/firebase";
-import { doc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import {
+  Button,
+  TextField,
+  Box,
+  Container,
+  Typography,
+  Stack,
+  InputLabel,
+} from "@mui/material";
+import { saveArchivos } from "../services/firebase";
+import swal from "sweetalert";
+import { uploaFiles } from "../services/firebase";
 
 export default function Register() {
   const [file, setFile] = useState(null);
   const [urlImg, seturlImg] = useState("");
-
   const navigate = useNavigate();
 
-  // console.log(file);
-
-  // funcion para enviar los datos
   const handleSubmit = async (e) => {
     const formData = new FormData(e.target);
 
     e.preventDefault();
-    // envia el documento a storage
     const result = await uploaFiles(file);
-    // obtiene la referencia del documento
     seturlImg(result);
-    // console.log(urlImg);
 
     const nombre = formData.get("name");
     const apellido = formData.get("lastName");
@@ -33,7 +34,6 @@ export default function Register() {
     const idMadre = formData.get("idMadre");
     const img = result;
 
-    // encarga de guardar los datos
     const newObj = {
       nombre,
       apellido,
@@ -44,7 +44,7 @@ export default function Register() {
       idMadre,
       img,
     };
-    // envia datos a firestore
+
     await saveArchivos(newObj)
       .then(
         swal(
@@ -57,32 +57,97 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label> Nombre Completo del estudiante</label>
-        <input type="text" name="name" id="name" />
-        <label> Apellido</label>
-        <input type="text" name="lastName" id="lastName" />
-        <label>Documento de identidad del estudiante(opcional)</label>
-        <input type="text" name="id" id="id" />
-        <label>Nombre completo de la madre</label>
-        <input type="text" name="name_madre" id="name_madre" />
-        <label>Nombre completo del Padre</label>
-        <input type="text" name="name_padre" id="name_padre" />
-        <label>Documento de identidad del Padre</label>
-        <input type="text" name="idPadre" id="idPadre" />
-        <label>Documento de identidad de la Madre</label>
-        <input type="text" name="idMadre" id="idMadre" />
-
-        <input
+    <Box sx={{ p: 3 }}>
+      <Container maxWidth="sm" sx={{ bgcolor: "#fff", p: 3 }}>
+        <Typography variant="h4" align="center" mb={3}>
+          Registro de estudiante
+        </Typography>
+      </Container>
+      <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
+        <TextField
+          fullWidth
+          label="Nombre completo del estudiante"
+          name="name"
+          id="name"
+          mb={2}
+          required
+          sx={{ my: 1 }}
+        />
+        <TextField
+          fullWidth
+          label="Apellido"
+          name="lastName"
+          id="lastName"
+          mb={2}
+          required
+          sx={{ my: 1 }}
+        />
+        <TextField
+          fullWidth
+          label="Documento de identidad del estudiante (opcional)"
+          name="id"
+          id="id"
+          mb={2}
+          sx={{ my: 1 }}
+        />
+        <TextField
+          fullWidth
+          label="Nombre completo de la madre"
+          name="name_madre"
+          id="name_madre"
+          mb={2}
+          required
+          sx={{ my: 1 }}
+        />
+        <TextField
+          fullWidth
+          label="Nombre completo del padre"
+          name="name_padre"
+          id="name_padre"
+          mb={2}
+          required
+          sx={{ my: 1 }}
+        />
+        <TextField
+          fullWidth
+          label="Documento de identidad del padre"
+          name="idPadre"
+          id="idPadre"
+          mb={2}
+          required
+          sx={{ my: 1 }}
+        />
+        <TextField
+          fullWidth
+          label="Documento de identidad de la madre"
+          name="idMadre"
+          id="idMadre"
+          mb={2}
+          required
+          sx={{ my: 1 }}
+        />
+        <TextField
+          fullWidth
           type="file"
-          name=""
+          name="file"
           id="file"
+          mb={2}
+          required
           onChange={(e) => setFile(e.target.files[0])}
+          sx={{ my: 1 }}
+          InputLabelProps={{
+            shrink: true,
+            sx: { mr: 0, my: 0 },
+          }}
+          label="imagen del estudiante"
         />
 
-        <button>enviar</button>
-      </form>
-    </div>
+        <Stack>
+          <Button variant="contained" type="submit">
+            Enviar
+          </Button>
+        </Stack>
+      </Box>
+    </Box>
   );
 }
