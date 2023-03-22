@@ -21,6 +21,8 @@ export default function Formulario({ student }) {
       cedula: cedula,
       nMadre: nMadre,
       nPadre: nPadre,
+      idMadre: idMadre,
+      idPadre: idPadre,
     };
 
     editArchivo(student.id, updatedStudent)
