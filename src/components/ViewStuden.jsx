@@ -1,18 +1,40 @@
 import { useEffect, useState } from "react";
 import { traerDatos } from "../services/firebase";
 import Student from "./Student";
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box, Button, CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
+import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
+import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 
 export default function ViewStundents() {
+  const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    traerDatos().then(setData);
-    // console.log(data);
+    setTimeout(() => {
+      traerDatos().then((data) => {
+        setIsLoading(false);
+        setData(data);
+      });
+    }, 3000);
   }, []);
 
-  if (data.length == 0) {
+  if (isLoading) {
+    return (
+      <Box
+        mt={30}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <CircularProgress color="primary" size={80} />
+      </Box>
+    );
+  }
+
+  if (data.length === 0) {
     return (
       <Box
         mt={30}
@@ -20,13 +42,14 @@ export default function ViewStundents() {
           textAlign: "center",
         }}
       >
-        <Typography sx={{}}>!No hay datos de momento...</Typography>
+        <Typography>¡No hay datos de momento!</Typography>
         <Link to="/Register_student">
           <Button variant="contained">Agregar Estudiante</Button>
         </Link>
       </Box>
     );
   }
+
   return (
     <>
       <div>
