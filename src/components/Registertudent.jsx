@@ -9,13 +9,13 @@ import {
   Stack,
   InputLabel,
 } from "@mui/material";
-import { saveArchivos } from "../services/firebase";
+import { saveArchivos, uploaFiles } from "../services/firebase";
 import swal from "sweetalert";
-import { uploaFiles } from "../services/firebase";
 
 export default function Register() {
   const [file, setFile] = useState(null);
   const [urlImg, seturlImg] = useState("");
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -33,6 +33,7 @@ export default function Register() {
     const idPadre = formData.get("idPadre");
     const idMadre = formData.get("idMadre");
     const img = result;
+    const recordNotas = resultRecord;
 
     const newObj = {
       nombre,

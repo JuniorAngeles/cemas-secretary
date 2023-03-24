@@ -156,6 +156,7 @@ export default function Student({ student }) {
           />
         </Grid>
       </Grid>
+
       <Box
         sx={{
           height: "65vh",
