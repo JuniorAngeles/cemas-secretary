@@ -152,7 +152,7 @@ export default function Student({ student }) {
           <Avatar
             src={student.img}
             alt={student.nombre}
-            sx={{ width: "100%", height: "auto", borderRadius: 0 }}
+            sx={{ width: "100%", height: "400px", borderRadius: 0 }}
           />
         </Grid>
       </Grid>
