@@ -7,7 +7,6 @@ import {
   Container,
   Typography,
   Stack,
-  InputLabel,
 } from "@mui/material";
 import { saveArchivos, uploaFiles } from "../services/firebase";
 import swal from "sweetalert";
@@ -15,11 +14,13 @@ import swal from "sweetalert";
 export default function Register() {
   const [file, setFile] = useState(null);
   const [urlImg, seturlImg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     const formData = new FormData(e.target);
+    setIsLoading(true);
 
     e.preventDefault();
     const result = await uploaFiles(file);
@@ -33,7 +34,6 @@ export default function Register() {
     const idPadre = formData.get("idPadre");
     const idMadre = formData.get("idMadre");
     const img = result;
-    const recordNotas = resultRecord;
 
     const newObj = {
       nombre,
@@ -54,7 +54,10 @@ export default function Register() {
           "success"
         )
       )
-      .then(navigate("/"));
+      .then(() => {
+        setIsLoading(false); // establecer el estado de carga en falso cuando se completa la operación
+        navigate("/");
+      });
   };
 
   return (
@@ -142,7 +145,11 @@ export default function Register() {
           }}
           label="imagen del estudiante"
         />
-
+        {isLoading ? (
+          <Typography variant="body1" align="center" mt={2}>
+            Cargando...
+          </Typography>
+        ) : null}
         <Stack>
           <Button variant="contained" type="submit">
             Enviar
