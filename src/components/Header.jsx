@@ -11,11 +11,14 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import BungalowIcon from "@mui/icons-material/Bungalow";
-import { Link } from "react-router-dom";
+
 import Student from "./Student";
-import { useState, useMemo, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Busqueda } from "./Busqueda";
 import { traerDatos } from "../services/firebase";
+import { logout } from "../services/firebase";
+import { useNavigate, useLocation } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -59,11 +62,31 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Header() {
+export default function Header({ isAuthenticated }) {
   const [users, setUsers] = useState([]);
   const [filteredUsers, setFilteredUsers] = useState(users);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
+
+  const locationPath = useLocation();
+
+  // Function para cerrar cesion
+  const [user, setUser] = useState(null);
+  const [todos, setTodos] = useState([]);
   // console.log(query);
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        localStorage.removeItem("uid");
+        setUser(null);
+        setTodos([]);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      .then(() => navigate("/"));
+  };
 
   useEffect(() => {
     traerDatos().then(setUsers);
@@ -78,17 +101,16 @@ export default function Header() {
     setFilteredUsers(Array.from(new Set(result)));
   }, [query, users]);
 
-  // useEffect(() => {
-  //   traerDatos().then(setUsers);
-  //   if (users) {
-  //     const result = Busqueda(users, query);
-  //     setFilteredUsers(result);
-  //   }
-  // }, [query]);
-
-  // useMemo(() => {
-  //
-  // }, );
+  const handleNavigateRegister = () => {
+    navigate("/Register_student");
+  };
+  const handleNavigateStudent = () => {
+    navigate("/Students");
+  };
+  // Si el usuario no está autenticado y la ruta actual es la página de inicio de sesión, no mostramos el encabezado
+  if (!isAuthenticated && locationPath.pathname === "/login") {
+    return null;
+  }
 
   return (
     <>
@@ -111,13 +133,27 @@ export default function Header() {
               Secretary Cemas
             </Typography>
 
-            <Box component={Link} to="/Register_student">
-              <AddIcon />
-            </Box>
+            <AddIcon
+              onClick={handleNavigateRegister}
+              sx={{
+                marginRight: 5,
+              }}
+            />
 
-            <Box mr={3} ml={3} component={Link} to="/">
-              <BungalowIcon />
-            </Box>
+            <BungalowIcon
+              onClick={handleNavigateStudent}
+              sx={{
+                marginRight: 5,
+              }}
+            />
+
+            <LogoutIcon
+              onClick={handleLogout}
+              sx={{
+                marginRight: 5,
+              }}
+            />
+
             <Search>
               <SearchIconWrapper>
                 <SearchIcon />
