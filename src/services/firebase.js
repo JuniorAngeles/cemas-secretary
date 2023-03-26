@@ -17,7 +17,13 @@ import {
   getDownloadURL,
   getBytes,
 } from "firebase/storage";
-
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import {} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -36,6 +42,8 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const storage = getStorage(app);
+export const auth = getAuth(app);
+export const googleAuthProvider = new GoogleAuthProvider();
 
 // const usuarioRef = db.collection("Estudiantes");
 
@@ -86,6 +94,29 @@ export async function uploaFiles(file) {
   // const url = await getDownloadURL(storageRef);
   // return url;
 }
+// regisro con google
+export const loginWithGoogle = () => {
+  return signInWithPopup(auth, googleAuthProvider)
+    .then((result) => result.user)
+    .catch((error) => console.log(error));
+};
+
+// Cerrar sesion
+export const logout = () => {
+  return signOut(auth)
+    .then(() => null)
+    .catch((error) => console.log(error));
+};
+
+// export async function uploaFilesRecord(file) {
+//   const storageRef = ref(
+//     storage,
+//     "RecordNotasEstudiantes",
+//     crypto.randomUUID()
+//   );
+//   const url = await getDownloadURL(storageRef);
+//   return url;
+// }
 
 // if (location.hostname == "localhost") {
 //   firebaseConfig = {
