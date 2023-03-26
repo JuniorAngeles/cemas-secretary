@@ -1,6 +1,8 @@
 import { grey } from "@mui/material/colors/";
 import { Grid, Box, Stack, Button, Typography, Avatar } from "@mui/material";
 import CircleIcon from "@mui/icons-material/Circle";
+import DeleteIcon from "@mui/icons-material/Delete";
+import UpgradeIcon from "@mui/icons-material/Upgrade";
 import { useNavigate } from "react-router-dom";
 import { deleteArchivo, editArchivo } from "../services/firebase";
 import { useState, useEffect } from "react";
@@ -97,9 +99,11 @@ export default function Student({ student }) {
           >
             {!showForm && (
               <Button
-                variant="contained"
+                variant="outlined"
+                startIcon={<UpgradeIcon />}
                 target="_blank"
-                sx={{ width: "120px", backgroundColor: "#5774FF" }}
+                sx={{ width: "120px", backgroundColor: "lightblue" }}
+                color="success"
                 onClick={handleEditArchivo}
               >
                 Editar
@@ -109,12 +113,14 @@ export default function Student({ student }) {
 
             {!showForm && (
               <Button
-                variant="contained"
-                target="_blank"
-                sx={{ width: "120px", backgroundColor: "#5774FF" }}
+                variant="outlined"
+                startIcon={<DeleteIcon />}
+                arget="_blank"
+                sx={{ width: "120px", backgroundColor: "#ff9999" }}
                 onClick={handleDelete}
+                color="error"
               >
-                Eliminar
+                Delete
               </Button>
             )}
           </Stack>
