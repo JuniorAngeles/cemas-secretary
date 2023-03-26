@@ -56,7 +56,7 @@ export default function Register() {
       )
       .then(() => {
         setIsLoading(false); // establecer el estado de carga en falso cuando se completa la operación
-        navigate("/");
+        navigate("/Students");
       });
   };
 
