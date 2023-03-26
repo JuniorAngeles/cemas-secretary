@@ -2,7 +2,7 @@ import { loginWithGoogle } from "../services/firebase";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Button, Box } from "@mui/material";
-
+import GoogleIcon from "@mui/icons-material/Google";
 export function Login() {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -20,12 +20,12 @@ export function Login() {
       });
   };
 
-  // useEffect(() => {
-  const uid = localStorage.getItem("uid"); // Obtener el uid del localStorage
-  if (uid) {
-    navigate("/Students"); // Si el uid está en el localStorage, redirigir al usuario a la ruta "/Students"
-  }
-  // }, [navigate]);
+  useEffect(() => {
+    const uid = localStorage.getItem("uid"); // Obtener el uid del localStorage
+    if (uid) {
+      navigate("/Students"); // Si el uid está en el localStorage, redirigir al usuario a la ruta "/Students"
+    }
+  }, [navigate]);
 
   return (
     <Box
@@ -38,6 +38,7 @@ export function Login() {
     >
       <Button
         onClick={handleGoogleLogin}
+        startIcon={<GoogleIcon />}
         variant="contained"
         disableElevation
         color="error"
