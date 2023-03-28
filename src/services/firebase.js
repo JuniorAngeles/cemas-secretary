@@ -22,6 +22,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  GithubAuthProvider,
 } from "firebase/auth";
 import {} from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -44,6 +45,7 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 export const auth = getAuth(app);
 export const googleAuthProvider = new GoogleAuthProvider();
+export const githubAuthProvaider = new GithubAuthProvider();
 
 // const usuarioRef = db.collection("Estudiantes");
 
@@ -97,6 +99,13 @@ export async function uploaFiles(file) {
 // regisro con google
 export const loginWithGoogle = () => {
   return signInWithPopup(auth, googleAuthProvider)
+    .then((result) => result.user)
+    .catch((error) => console.log(error));
+};
+
+// registro con github
+export const loginWithGihub = () => {
+  return signInWithPopup(auth, githubAuthProvaider)
     .then((result) => result.user)
     .catch((error) => console.log(error));
 };
