@@ -3,9 +3,7 @@ import { traerDatos } from "../services/firebase";
 import Student from "./Student";
 import { Typography, Box, Button, CircularProgress } from "@mui/material";
 import { Link } from "react-router-dom";
-import HourglassBottomIcon from "@mui/icons-material/HourglassBottom";
-import HourglassTopIcon from "@mui/icons-material/HourglassTop";
-
+import Header from "./HeaderAdmin";
 export default function ViewStundents() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);

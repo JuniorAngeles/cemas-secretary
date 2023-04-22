@@ -8,6 +8,7 @@ import { useSpring, animated } from "@react-spring/web";
 
 export function Login() {
   const [user, setUser] = useState(null);
+
   const navigate = useNavigate();
 
   // Animation In stack for login
@@ -21,10 +22,15 @@ export function Login() {
   const handleGoogleLogin = () => {
     loginWithGoogle()
       .then((user) => {
-        const { uid, displayName, photoURL } = user;
-        setUser({ uid, displayName, photoURL });
+        const { uid, displayName, photoURL, email } = user;
+        setUser({ uid, displayName, photoURL, email });
         localStorage.setItem("uid", uid); // Guardar el uid en el localStorage
-        navigate("/Students");
+        localStorage.setItem("email", email);
+        if (email === "cemasfeyalegria373@gmail.com") {
+          navigate("/AdminCemas"); // Si el uid está en el localStorage, redirigir al usuario a la ruta "/Students"
+        } else {
+          navigate("/Cemas.com");
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -38,19 +44,12 @@ export function Login() {
         const { uid, displayName, photoURL } = user;
         setUser({ uid, displayName, photoURL });
         localStorage.setItem("uid", uid); // Guardar el uid en el localStorage
-        navigate("/Students");
+        navigate("/Cemas.com");
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
-  useEffect(() => {
-    const uid = localStorage.getItem("uid"); // Obtener el uid del localStorage
-    if (uid) {
-      navigate("/Students"); // Si el uid está en el localStorage, redirigir al usuario a la ruta "/Students"
-    }
-  }, [navigate]);
 
   return (
     <Grid

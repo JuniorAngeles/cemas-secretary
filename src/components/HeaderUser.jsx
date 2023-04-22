@@ -101,12 +101,6 @@ export default function Header({ isAuthenticated }) {
     setFilteredUsers(Array.from(new Set(result)));
   }, [query, users]);
 
-  const handleNavigateRegister = () => {
-    navigate("/Register_student");
-  };
-  const handleNavigateStudent = () => {
-    navigate("/Students");
-  };
   // Si el usuario no está autenticado y la ruta actual es la página de inicio de sesión, no mostramos el encabezado
   if (!isAuthenticated && locationPath.pathname === "/login") {
     return null;
@@ -132,20 +126,6 @@ export default function Header({ isAuthenticated }) {
             >
               Secretary Cemas
             </Typography>
-
-            <AddIcon
-              onClick={handleNavigateRegister}
-              sx={{
-                marginRight: 5,
-              }}
-            />
-
-            <BungalowIcon
-              onClick={handleNavigateStudent}
-              sx={{
-                marginRight: 5,
-              }}
-            />
 
             <LogoutIcon
               onClick={handleLogout}

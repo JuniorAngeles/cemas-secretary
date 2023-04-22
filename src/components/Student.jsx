@@ -27,9 +27,6 @@ export default function Student({ student }) {
           })
         )
         .then(navigate("/"));
-
-      // location.reload();
-      // console.log("Hola");
     }
   };
 
@@ -37,9 +34,6 @@ export default function Student({ student }) {
     setShowForm(true);
   };
 
-  // function que guarda los cambios realizados
-
-  // console.log(student.id);
   return (
     <>
       <Grid
