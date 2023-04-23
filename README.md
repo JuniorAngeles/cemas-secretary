@@ -40,23 +40,23 @@ Agregar estudiantes (solo para usuarios administradores). Editar estudiantes (so
 # Colaboradores 
 - Edward Junior Bautista Àngeles (Scrum Master)
 - Equi de desarrollo
- - Jeremy Àngeles
- - Anthony Rodriguez
- - Yerlyn Mejia
- - Alvin Hidialgo
- - Yosaury Cepeda
- - Kirsy Contreras
- - Angel de la rosa
- - Pablo de jesus
- - Justin Florian
- - Frandy 
- - Chamil Jazques
- - Argenis Javier
- - Ici Maria Lora
- - Stuard Lora
- - Dahian Alexander
- - Luis Miguel Mercado
- - Rainierys Polanco
- - Kendy Alexander
- - Kenny Bueno Vanvlarcum
+  - Jeremy Àngeles
+  - Anthony Rodriguez
+  - Yerlyn Mejia
+  - Alvin Hidialgo
+  - Yosaury Cepeda
+  - Kirsy Contreras
+  - Angel de la rosa
+  - Pablo de jesus
+  - Justin Florian
+  - Frandy 
+  - Chamil Jazques
+  - Argenis Javier
+  - Ici Maria Lora
+  - Stuard Lora
+  - Dahian Alexander
+  - Luis Miguel Mercado
+  - Rainierys Polanco
+  - Kendy Alexander
+  - Kenny Bueno Vanvlarcum
  
