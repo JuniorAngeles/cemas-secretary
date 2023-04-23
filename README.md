@@ -16,12 +16,12 @@ cd tuprojecto
 npm install
 
 4 Crea un archivo .env en la raíz del proyecto y agrega tus credenciales de Firebase:
-VITE_API_KEY=your-api-key
-VITE_AUTH_DOMAIN=your-auth-domain
-VITE_PROJECT_ID=your-project-id
-VITE_STORAGE_BUCKET=your-storage-bucket
-VITE_MESSAGING_SENDER_ID=your-messaging-sender-id
-VITE_APP_ID=your-app-id
+.VITE_API_KEY=your-api-key
+.VITE_AUTH_DOMAIN=your-auth-domain
+.VITE_PROJECT_ID=your-project-id
+.VITE_STORAGE_BUCKET=your-storage-bucket
+.VITE_MESSAGING_SENDER_ID=your-messaging-sender-id
+.VITE_APP_ID=your-app-id
 
 5 Ejecuta el servidor de desarrollo:
 npm run dev
