@@ -2,7 +2,7 @@
 
 
 # Secretaría web con Vite y Firebase
-Este es un proyecto de secretaría web creado con Vite y Firebase. Esta aplicación permite a los usuarios administradores agregar, editar, ver y borrar datos de los estudiantes, mientras que los usuarios normales solo pueden ver información sobre la aplicación.
+Este es un proyecto de secretaría web creado con Vite y Firebase. Esta aplicación permite a los usuarios administradores agregar, editar, ver y borrar datos de los estudiantes, mientras que los usuarios normales solo pueden ver información sobre la aplicación. En caso de que seas un usuario comun y corriente solo podras ver informacion relevante sobre la app y como obtener informacion de El #Centro Educativo Manuel Acevedo Serrano Fe y Alegria 
 
 # Cómo clonar y correr el proyecto
 
