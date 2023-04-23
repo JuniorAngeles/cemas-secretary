@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import { saveArchivos, uploaFiles } from "../services/firebase";
 import swal from "sweetalert";
-import Header from "./HeaderAdmin";
 
 export default function Register() {
   const [file, setFile] = useState(null);
@@ -63,7 +62,6 @@ export default function Register() {
 
   return (
     <>
-      <Header />
       <Box sx={{ p: 3 }}>
         <Container maxWidth="sm" sx={{ bgcolor: "#fff", p: 3 }}>
           <Typography variant="h4" align="center" mb={3}>

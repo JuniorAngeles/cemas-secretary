@@ -5,6 +5,7 @@ import { Button, Stack, Typography, Grid, Paper } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { useSpring, animated } from "@react-spring/web";
+import Header from "./HeaderAdmin";
 
 export function Login() {
   const [user, setUser] = useState(null);
@@ -27,7 +28,7 @@ export function Login() {
         localStorage.setItem("uid", uid); // Guardar el uid en el localStorage
         localStorage.setItem("email", email);
         if (email === "cemasfeyalegria373@gmail.com") {
-          navigate("/AdminCemas"); // Si el uid está en el localStorage, redirigir al usuario a la ruta "/Students"
+          navigate("/Students"); // Si el uid está en el localStorage, redirigir al usuario a la ruta "/Students"
         } else {
           navigate("/Cemas.com");
         }
@@ -50,6 +51,18 @@ export function Login() {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    const uid = localStorage.getItem("uid");
+    const email = localStorage.getItem("email");
+    if (uid && email === "cemasfeyalegria373@gmail.com") {
+      navigate("/Students");
+    }
+
+    if (uid && email !== "cemasfeyalegria373@gmail.com") {
+      navigate("/Cemas.com");
+    }
+  });
 
   return (
     <Grid

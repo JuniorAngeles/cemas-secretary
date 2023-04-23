@@ -21,12 +21,12 @@ function App() {
       <HashRouter>
         <Header />
         <Routes>
-          <Route path="/Cemas.com" element={<User />} />
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<Navigate to={"/login"} />} />
           <Route path="/Students" element={<ViewStundents />} />
           <Route path="/Register_student" element={<Register />} />
           <Route path="/AdminCemas" element={<Admin />} />
+          <Route path="/Cemas.com" element={<User />} />
         </Routes>
       </HashRouter>
     </>

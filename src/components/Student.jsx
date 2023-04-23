@@ -26,7 +26,7 @@ export default function Student({ student }) {
             text: "En caso de que no se presenten los datos recarga la pagina",
           })
         )
-        .then(navigate("/"));
+        .then(location.reload());
     }
   };
 
