@@ -1,4 +1,4 @@
-- # cemas-secretary
+# cemas-secretary
 ![image](https://user-images.githubusercontent.com/101486148/233857848-27285b72-7728-4b31-a86e-614ea67cc767.png)
 
 # Secretaría web con Vite y Firebase
