@@ -40,7 +40,7 @@ Agregar estudiantes (solo para usuarios administradores). Editar estudiantes (so
 # Colaboradores 
 - Edward Junior Bautista Àngeles (Scrum Master)
 - Equi de desarrollo
-  - Jeremy Àngeles
+ - Jeremy Àngeles
  - Anthony Rodriguez
  - Yerlyn Mejia
  - Alvin Hidialgo
