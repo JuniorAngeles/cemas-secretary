@@ -14,7 +14,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export default function User() {
   swal("Te damos la Bienvenida al CEMAS", "conocenos");
-  console.log(infoArray);
+
   return (
     <>
       <Header />
