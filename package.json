@@ -8,8 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "prepublish": "npm run build",
-    "publish": "gh-pages -d dist"
+    "publish": "vite build -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
