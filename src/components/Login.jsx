@@ -1,11 +1,10 @@
-import { loginWithGoogle, loginWithGihub } from "../services/firebase";
+import { loginWithGoogle } from "../services/firebase";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Button, Stack, Typography, Grid, Paper } from "@mui/material";
+import { Button, Stack, Grid, Typography } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
-import GitHubIcon from "@mui/icons-material/GitHub";
+
 import { useSpring, animated } from "@react-spring/web";
-import Header from "./HeaderAdmin";
 
 export function Login() {
   const [user, setUser] = useState(null);
@@ -38,20 +37,6 @@ export function Login() {
       });
   };
 
-  // login with GitHub
-  const handleGitHubLogin = () => {
-    loginWithGihub()
-      .then((user) => {
-        const { uid, displayName, photoURL } = user;
-        setUser({ uid, displayName, photoURL });
-        localStorage.setItem("uid", uid); // Guardar el uid en el localStorage
-        navigate("/Cemas.com");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
     const uid = localStorage.getItem("uid");
     const email = localStorage.getItem("email");
@@ -75,61 +60,38 @@ export function Login() {
     >
       <animated.div style={fadeIn}>
         <Stack>
-          <Paper elevation={10}>
-            <Stack
+          <Stack
+            sx={{
+              height: "auto",
+              width: "600px",
+              alignItems: "center",
+            }}
+          >
+            <Button
+              onClick={handleGoogleLogin}
+              startIcon={<GoogleIcon />}
+              variant="contained"
+              disableElevation
+              color="secondary"
               sx={{
-                height: "auto",
-                width: "600px",
-                alignItems: "center",
+                backgroundColor: "#ff0000",
+                fontWeight: "bold",
+                height: "60px",
+                width: "300px",
+                margin: 2,
+                transition: "all 0.5s ease",
               }}
             >
-              <Typography
-                variant="h4s"
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "4rem",
-                  marginBottom: 30,
-                }}
-              >
-                Login
-              </Typography>
-
-              <Button
-                onClick={handleGoogleLogin}
-                startIcon={<GoogleIcon />}
-                variant="contained"
-                disableElevation
-                color="secondary"
-                sx={{
-                  backgroundColor: "#ff0000",
-                  fontWeight: "bold",
-                  height: "60px",
-                  width: "300px",
-                  margin: 2,
-                  transition: "all 0.5s ease",
-                }}
-              >
-                Login with Google
-              </Button>
-              <Button
-                onClick={handleGitHubLogin}
-                startIcon={<GitHubIcon />}
-                variant="contained"
-                disableElevation
-                color="secondary"
-                sx={{
-                  backgroundColor: "#000000",
-                  fontWeight: "bold",
-                  width: "300px",
-                  height: "60px",
-                  margin: 2,
-                  transition: "all 0.5s ease",
-                }}
-              >
-                Login with GitHub
-              </Button>
-            </Stack>
-          </Paper>
+              Login with Google
+            </Button>
+            <Typography
+              sx={{
+                fontSize: "10px",
+              }}
+            >
+              Add Google Sign In Button to WebSite
+            </Typography>
+          </Stack>
         </Stack>
       </animated.div>
     </Grid>
