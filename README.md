@@ -32,11 +32,11 @@ Este es un proyecto de secretaría web creado con Vite y Firebase. Esta aplicaci
 Agregar estudiantes (solo para usuarios administradores). Editar estudiantes (solo para usuarios administradores). Ver estudiantes (solo para usuarios administradores y usuarios normales). Borrar estudiantes (solo para usuarios administradores
 
 # Capturas de pantalla
-![image](https://user-images.githubusercontent.com/101486148/233857764-7b76e863-b2fa-4e32-aafa-a2a39b4ed54c.png)
+<img width="958" alt="Secretary Cemas - Brave 24_04_2023 16_54_39" src="https://user-images.githubusercontent.com/101486148/234035966-4d368b49-1b0e-4f99-ae74-465a56d24596.png">
 - Vista Admin
-![image](https://user-images.githubusercontent.com/101486148/233857818-f09876fb-5069-4be3-af77-a6751796a812.png)
+<img width="958" alt="Secretary Cemas - Brave 24_04_2023 16_55_23" src="https://user-images.githubusercontent.com/101486148/234036229-357bfe17-1829-4f04-bd80-dcfdb0196aa8.png">
 - Vista user
-![image](https://user-images.githubusercontent.com/101486148/233857837-dcb3168e-7c66-4fae-b095-66f9b0108e8e.png)
+<img width="960" alt="Secretary Cemas - Brave 24_04_2023 16_56_00" src="https://user-images.githubusercontent.com/101486148/234036501-9ec231f6-7edf-4528-b04f-38e8c9193dcf.png">
 
 # Colaboradores 
 - Edward Junior Bautista Àngeles (Scrum Master)
