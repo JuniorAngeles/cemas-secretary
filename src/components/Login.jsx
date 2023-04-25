@@ -67,6 +67,7 @@ export function Login() {
               alignItems: "center",
             }}
           >
+            {" "}
             <Button
               onClick={handleGoogleLogin}
               startIcon={<GoogleIcon />}
