@@ -129,7 +129,8 @@ export default function Header({ isAuthenticated }) {
   // Si el usuario no está autenticado y la ruta actual es la página de inicio de sesión, no mostramos el encabezado
   if (
     (!isAuthenticated && locationPath.pathname === "/login") ||
-    locationPath.pathname === "/Cemas.com"
+    locationPath.pathname === "/Cemas.com" ||
+    locationPath.pathname === "/AboutUser"
   ) {
     return null;
   }

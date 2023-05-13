@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { documentId, getFirestore } from "firebase/firestore";
 import {
   collection,
   addDoc,
@@ -10,14 +10,21 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {
+  getStorage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getBytes,
+} from "firebase/storage";
 import {
   getAuth,
   GoogleAuthProvider,
   signInWithPopup,
   signOut,
+  GithubAuthProvider,
 } from "firebase/auth";
-import {} from "firebase/auth";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -38,8 +45,7 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 export const auth = getAuth(app);
 export const googleAuthProvider = new GoogleAuthProvider();
-
-// const usuarioRef = db.collection("Estudiantes");
+export const githubAuthProvaider = new GithubAuthProvider();
 
 // Guardar datos en firebase
 export const saveArchivos = (data) =>
@@ -57,9 +63,9 @@ export async function traerDatos() {
   return docs;
 }
 
-export const getArchivo = (id) => {
-  getDoc(doc(db, "Estudiantes", id));
-};
+// export const getArchivo = (id) => {
+//   getDoc(doc(db, "Estudiantes", id));
+// };
 
 export const deleteArchivo = async (id) => {
   await deleteDoc(doc(db, "Estudiantes", id));
@@ -94,6 +100,13 @@ export const loginWithGoogle = () => {
     .then((result) => result.user)
     .catch((error) => console.log(error));
 };
+
+// registro con github
+// export const loginWithGihub = () => {
+//   return signInWithPopup(auth, githubAuthProvaider)
+//     .then((result) => result.user)
+//     .catch((error) => console.log(error));
+// };
 
 // Cerrar sesion
 export const logout = () => {

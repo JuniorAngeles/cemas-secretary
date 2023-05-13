@@ -44,10 +44,10 @@ export default function Header({ isAuthenticated }) {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  // adaptar a dispositivos móviles
   const isMobile = useMediaQuery("(max-width:800px)");
   // Function para cerrar cesion
-  const [user, setUser] = useState(null);
-  const [todos, setTodos] = useState([]);
+
   // console.log(query);
 
   const handleLogout = () => {
@@ -140,6 +140,32 @@ export default function Header({ isAuthenticated }) {
                 Secretary Cemas
               </Typography>
 
+              <IconButton
+                sx={{
+                  fontSize: "20px",
+                  marginRight: 2,
+                }}
+                onClick={() => navigate("/AboutUser")}
+              >
+                quiene somos
+              </IconButton>
+              <IconButton
+                sx={{
+                  fontSize: "20px",
+                  marginRight: 2,
+                }}
+              >
+                certificaciones
+              </IconButton>
+
+              <IconButton
+                sx={{
+                  fontSize: "20px",
+                  marginRight: 2,
+                }}
+              >
+                record academico
+              </IconButton>
               <LogoutIcon
                 onClick={handleLogout}
                 sx={{

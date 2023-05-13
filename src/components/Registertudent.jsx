@@ -25,7 +25,7 @@ export default function Register() {
     e.preventDefault();
     const result = await uploaFiles(file);
     seturlImg(result);
-
+    // obtener los datos del formulario
     const nombre = formData.get("name");
     const apellido = formData.get("lastName");
     const cedula = formData.get("id");
@@ -34,7 +34,7 @@ export default function Register() {
     const idPadre = formData.get("idPadre");
     const idMadre = formData.get("idMadre");
     const img = result;
-
+    // guardar datos en un objeto
     const newObj = {
       nombre,
       apellido,
