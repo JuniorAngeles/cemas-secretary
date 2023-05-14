@@ -1,8 +1,9 @@
 import { loginWithGoogle } from "../services/firebase";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Button, Stack, Grid, Typography } from "@mui/material";
+import { Button, Stack, Grid, Typography, Paper } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
+import cemas from "../assets/cemas.jpg";
 
 import { useSpring, animated } from "@react-spring/web";
 
@@ -50,51 +51,75 @@ export function Login() {
   });
 
   return (
-    <Grid
-      mt={20}
-      sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <animated.div style={fadeIn}>
-        <Stack>
-          <Stack
+    <animated.div style={fadeIn}>
+      <Grid
+        sx={{
+          backgroundImage: `url(${cemas})`, // Establece la imagen de fondo
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Paper
+          elevation={20}
+          sx={{
+            marginTop: 5,
+            background: "rgba(255, 255, 255, 0.5)",
+          }}
+        >
+          <Typography
             sx={{
-              height: "auto",
-              width: "600px",
-              alignItems: "center",
+              textAlign: "center",
+              fontSize: "4rem",
+              fontWeight: "bold",
+              fontFamily: "monospace",
             }}
           >
-            {" "}
-            <Button
-              onClick={handleGoogleLogin}
-              startIcon={<GoogleIcon />}
-              variant="contained"
-              disableElevation
-              color="secondary"
+            Sign In
+          </Typography>
+          <Stack>
+            <Stack
               sx={{
-                backgroundColor: "#ff0000",
-                fontWeight: "bold",
-                height: "60px",
-                width: "300px",
-                margin: 2,
-                transition: "all 0.5s ease",
+                height: "auto",
+                width: "400px",
+                alignItems: "center",
+                marginTop: 5,
+                marginBottom: 5,
               }}
             >
-              Login with Google
-            </Button>
-            <Typography
-              sx={{
-                fontSize: "10px",
-              }}
-            >
-              Add Google Sign In Button to WebSite
-            </Typography>
+              {" "}
+              <Button
+                onClick={handleGoogleLogin}
+                startIcon={<GoogleIcon />}
+                variant="contained"
+                disableElevation
+                color="secondary"
+                sx={{
+                  backgroundColor: "#ff0000",
+                  fontWeight: "bold",
+                  height: "60px",
+                  width: "300px",
+                  margin: 2,
+                  transition: "all 0.5s ease",
+                }}
+              >
+                Login with Google
+              </Button>
+              <Typography
+                sx={{
+                  fontSize: "10px",
+                }}
+              >
+                Add Google Sign In Button to WebSite
+              </Typography>
+            </Stack>
           </Stack>
-        </Stack>
-      </animated.div>
-    </Grid>
+        </Paper>
+      </Grid>
+    </animated.div>
   );
 }
