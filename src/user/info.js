@@ -1,18 +1,22 @@
 export const infoArray = [
   {
     id: 1,
-    Titulo: " ¿Quienes somos?",
+    Titulo: " ¿Quiénes somos?",
     Descripcion:
       "El apartado de secretaria lo componen la secretaria ejecutiva, digitadora, secretaria docente y secretaria. Este departamento utiliza actualmente la plataforma de Excel para poder trabajar en forma digital. Cuándo surja la necesidad de buscar un récord de notas, expedientes o certificaciones de estudios, usted nos dejará una solicitud pendiente por este medio y, nosotros le avisaremos cuando podrá pasar a buscar su récord de notas, solicitud de expedientes y certificaciones de estudios.",
     img: "https://scontent.fsti3-1.fna.fbcdn.net/v/t39.30808-6/302417062_450921680412516_1802213727715965879_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=cwGW_SjRUNUAX8LlAnY&_nc_ht=scontent.fsti3-1.fna&oh=00_AfDax8sNqSq4W4ivOWZLrC0w3dE2hJuL6nKtumYj8-xmPg&oe=64600506",
+    record: "",
+    cert: "",
   },
 
   {
     id: 2,
-    Titulo: "¿Como retirar el record de notas de los egresados del centro?",
+    Titulo: "¿Como retirar el récord de notas de los egresados del centro?",
     Descripcion:
-      "Debe realizar solicitud, dar nombre completo, año en que concluyo sus estudios, grado, sesion, tecnico y numero telefono. precios de documentos son record de nota: 200 certificacion de estudio: 50 .",
+      "Debe realizar solicitud, dar nombre completo, año en que concluyo sus estudios, grado, sesion, tecnico y numero telefono. precios de documentos son:",
     img: "https://scontent.fsti3-1.fna.fbcdn.net/v/t39.30808-6/302417062_450921680412516_1802213727715965879_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=e3f864&_nc_ohc=cwGW_SjRUNUAX8LlAnY&_nc_ht=scontent.fsti3-1.fna&oh=00_AfDax8sNqSq4W4ivOWZLrC0w3dE2hJuL6nKtumYj8-xmPg&oe=64600506",
+    record: "Record de nota: RD$200.",
+    cert: "Certificacion de estudio: RD$50",
   },
 ];
 

@@ -6,6 +6,8 @@ import {
   IconButton,
   Paper,
   Box,
+  List,
+  ListItem,
 } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { infoArray, infoArrayAdministracion } from "../user/info";
@@ -74,6 +76,23 @@ export default function AboutUser() {
                   <Typography sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}>
                     {info.Descripcion}
                   </Typography>
+
+                  <List>
+                    <ListItem>
+                      <Typography
+                        sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}
+                      >
+                        {info.cert}
+                      </Typography>
+                    </ListItem>
+                    <ListItem>
+                      <Typography
+                        sx={{ fontSize: { xs: "1rem", md: "1.25rem" } }}
+                      >
+                        {info.record}
+                      </Typography>
+                    </ListItem>
+                  </List>
                 </Grid>
                 <Grid
                   item
