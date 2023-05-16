@@ -29,7 +29,12 @@ export default function AboutUser() {
         }}
       >
         <Grid marginTop={5} margin={10}>
-          <Paper elevation={10}>
+          <Paper
+            elevation={10}
+            sx={{
+              background: "rgba(255, 255, 255, 0.5)",
+            }}
+          >
             {infoArray.map((info) => (
               <Grid
                 container
@@ -58,8 +63,9 @@ export default function AboutUser() {
                 >
                   <Typography
                     sx={{
-                      color: "#637DFF",
+                      color: "#000000",
                       fontSize: { xs: "1.5rem", md: "2rem" },
+                      fontWeight: "bold",
                     }}
                   >
                     {info.Titulo}
@@ -97,12 +103,12 @@ export default function AboutUser() {
               style={{
                 textAlign: "center",
                 fontSize: "2rem",
-                color: "#637DFF",
+                color: "#000000",
                 fontWeight: "bold",
                 marginBottom: "2rem",
               }}
             >
-              Administracion
+              Administración
             </Typography>
             <Grid
               sx={{
@@ -129,52 +135,52 @@ export default function AboutUser() {
               ))}
 
               {/* {infoArrayAdministracion.map((info) => (
-              <Grid key={info.id}>
-                <Paper
-                  elevation={4}
-                  sx={{
-                    position: "relative",
-                    width: "300px",
-                    height: "300px",
-                    alignItems: "center",
-                    marginBottom: "2rem",
-                  }}
-                >
-                  <br />
-
-                  <Box
+                <Grid key={info.id}>
+                  <Paper
+                    elevation={4}
                     sx={{
-                      marginLeft: "3rem",
+                      position: "relative",
+                      width: "300px",
+                      height: "300px",
+                      alignItems: "center",
+                      marginBottom: "2rem",
                     }}
                   >
-                    <Avatar
-                      src={info.photo}
-                      alt={info.nombre}
+                    <br />
+
+                    <Box
                       sx={{
-                        width: "200px",
-                        height: "200px",
+                        marginLeft: "3rem",
                       }}
-                    />
-                  </Box>
-                  <Box
-                    sx={{
-                      position: "absolute",
-                      bottom: 0,
-                      left: 0,
-                      width: "100%",
+                    >
+                      <Avatar
+                        src={info.photo}
+                        alt={info.nombre}
+                        sx={{
+                          width: "200px",
+                          height: "200px",
+                        }}
+                      />
+                    </Box>
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        width: "100%",
 
-                      padding: "10px",
-                      color: "#000000",
-                    }}
-                  >
-                    <Typography variant="subtitle1">
-                      {info.nombre} {info.apellido}
-                    </Typography>
-                    <Typography variant="body2">{info.cargo}</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            ))} */}
+                        padding: "10px",
+                        color: "#000000",
+                      }}
+                    >
+                      <Typography variant="subtitle1">
+                        {info.nombre} {info.apellido}
+                      </Typography>
+                      <Typography variant="body2">{info.cargo}</Typography>
+                    </Box>
+                  </Paper>
+                </Grid>
+              ))} */}
             </Grid>
           </Paper>
         </Grid>

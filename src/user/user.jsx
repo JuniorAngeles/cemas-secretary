@@ -1,5 +1,5 @@
 import Header from "../components/HeaderUser";
-import { Grid, Typography } from "@mui/material";
+import { Grid, Typography, Paper } from "@mui/material";
 import swal from "sweetalert";
 import { infoArray } from "./info";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
@@ -7,6 +7,8 @@ import "../styles/font.css";
 import cemas from "../assets/cemas.jpg";
 
 export default function User() {
+  const name = localStorage.getItem("displayName");
+  swal("Bienvenido", `${name}`);
   return (
     <>
       <Header />
@@ -22,25 +24,37 @@ export default function User() {
           flexDirection: "column",
         }}
       >
-        <Typography
+        <Paper
+          elevation={10}
           sx={{
-            fontSize: "3rem",
-            color: "blue",
-            fontWeight: "bold",
-            marginTop: "5%",
+            background: "rgba(255, 255, 255, 0.5)",
           }}
         >
-          Centro Educativo Manuel Acevedo Serrano
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: "2rem",
-            color: "blue",
-            fontWeight: "bold",
-          }}
-        >
-          "Fe y Alegría"
-        </Typography>
+          <Typography
+            sx={{
+              fontSize: "3rem",
+              color: "black",
+              fontWeight: "bold",
+              marginTop: "5%",
+              textAlign: "center",
+              marginLeft: "2.5rem",
+              marginRight: "2.5rem",
+            }}
+          >
+            Centro Educativo Manuel Acevedo Serrano
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: "2rem",
+              color: "black",
+              fontWeight: "bold",
+              textAlign: "center",
+              marginBottom: "2.5rem",
+            }}
+          >
+            "Fe y Alegría"
+          </Typography>
+        </Paper>
       </Grid>
     </>
   );

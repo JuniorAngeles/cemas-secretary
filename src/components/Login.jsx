@@ -27,6 +27,8 @@ export function Login() {
         setUser({ uid, displayName, photoURL, email });
         localStorage.setItem("uid", uid); // Guardar el uid en el localStorage
         localStorage.setItem("email", email);
+        localStorage.setItem("photoURL", photoURL);
+        localStorage.setItem("displayName", displayName);
         if (email === "cemasfeyalegria373@gmail.com") {
           navigate("/Students"); // Si el uid está en el localStorage, redirigir al usuario a la ruta "/Students"
         } else {

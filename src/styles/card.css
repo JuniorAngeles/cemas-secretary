@@ -104,19 +104,3 @@
        
    }
 
- * {
-	box-sizing: border-box;
-}
-
-body{
-	font-family: 'Roboto',sans-serif;
-	margin:0px;
-	overflow-x:hidden;
-	
-}
-
-@font-face{
-	font-family: MANNY MORA;
-	src:url(../../public/cemas.jpg);
-	
-}
